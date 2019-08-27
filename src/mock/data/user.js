@@ -9,6 +9,16 @@ const LoginUsers = [
   }
 ];
 
+const RegisterUsers = [
+  {
+    id: 1,
+    username: 'Walker',
+    password: 'Walker123',
+    avatar: 'https://raw.githubusercontent.com/taylorchen709/markdown-images/master/vueadmin/user.png',
+    name: 'Walker'
+  }
+];
+
 const Users = [];
 
 for (let i = 0; i < 86; i++) {
@@ -22,4 +32,4 @@ for (let i = 0; i < 86; i++) {
   }));
 }
 
-export { LoginUsers, Users };
+export { LoginUsers,RegisterUsers, Users };
