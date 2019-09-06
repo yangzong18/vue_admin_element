@@ -23,7 +23,7 @@
 		<el-col :span="24" class="main">
 			<aside :class="collapsed?'menu-collapsed':'menu-expanded'">
 				<!--导航菜单-->
-				<el-menu :default-active="$route.path" class="el-menu-vertical-demo" @open="handleopen" @close="handleclose" @select="handleselect"
+				<el-menu :default-active="$route.path" class="el-menu el-menu-vertical-demo" @open="handleopen" @close="handleclose" @select="handleselect"
 					 unique-opened router v-show="!collapsed">
 					<template v-for="(item,index) in $router.options.routes" v-if="!item.hidden">
 						<el-submenu :index="index+''" v-if="!item.leaf">
@@ -120,9 +120,11 @@
 			//折叠导航栏
 			collapse:function(){
 				this.collapsed=!this.collapsed;
+			
 			},
 			showMenu(i,status){
 				this.$refs.menuCollapsed.getElementsByClassName('submenu-hook-'+i)[0].style.display=status?'block':'none';
+				
 			}
 		},
 		mounted() {
@@ -168,7 +170,6 @@
 				}
 			}
 			.logo {
-				//width:230px;
 				height:60px;
 				font-size: 22px;
 				padding-left:20px;
@@ -201,19 +202,18 @@
 		}
 		.main {
 			display: flex;
-			// background: #324057;
 			position: absolute;
 			top: 60px;
 			bottom: 0px;
 			overflow: hidden;
 			aside {
-				flex:0 0 230px;
-				width: 230px;
-				// position: absolute;
-				// top: 0px;
-				// bottom: 0px;
 				.el-menu{
 					height: 100%;
+					width: 230px;
+					.el-icon-message {
+						width: unset;
+						margin-right: 10px;
+					}
 				}
 				.collapsed{
 					width:60px;
@@ -240,13 +240,7 @@
 				width: 230px;
 			}
 			.content-container {
-				// background: #f1f2f7;
 				flex:1;
-				// position: absolute;
-				// right: 0px;
-				// top: 0px;
-				// bottom: 0px;
-				// left: 230px;
 				overflow-y: scroll;
 				padding: 20px;
 				.breadcrumb-container {

@@ -1,7 +1,9 @@
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import { LoginUsers,RegisterUsers,Users } from './data/user';
-let _Users = Users;
+import { Customers } from './data/customer';
+let _Users = Users
+,_Customers = Customers;
 
 export default {
   /**
@@ -82,6 +84,22 @@ export default {
         }, 1000);
       });
     });
+    //获取用户列表
+    mock.onGet('/customer/list').reply(config => {
+      let {name} = config.params;
+      let mockCustomers = _Customers.filter(customer => {
+        if (name && customer.name.indexOf(name) == -1) return false;
+        return true;
+      });
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve([200, {
+            customers: mockCustomers
+          }]);
+        }, 1000);
+      });
+    });
+
 
     //获取用户列表（分页）
     mock.onGet('/user/listpage').reply(config => {

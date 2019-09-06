@@ -8,6 +8,10 @@ export const requestRegister = params => { return axios.post(`${base}/register`,
 
 export const getUserList = params => { return axios.get(`${base}/user/list`, { params: params }); };
 
+export const getCustomerList = params => { return axios.get(`${base}/customer/list`, { params: params }); };
+
+export const getCUstomerListPage = params => { return axios.get(`${base}/customer/listpage`, { params: params }); };
+
 export const getUserListPage = params => { return axios.get(`${base}/user/listpage`, { params: params }); };
 
 export const removeUser = params => { return axios.get(`${base}/user/remove`, { params: params }); };
